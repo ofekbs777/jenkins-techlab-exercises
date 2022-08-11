@@ -6,16 +6,13 @@ pipeline {
         timestamps()  // Timestamper Plugin
         disableConcurrentBuilds()
     }
-    environment {
-        GREETINGS_TO = 'Jenkins Techlab'
+    parameters {
+        string(name: 'Greetings_to', defaultValue: 'Jenkins Techlab', description: 'Who to greet?')
     }
     stages {
         stage('Greeting') {
             steps {
-                echo "Hello ${env.GREETINGS_TO} +and ${env.BUILD_ID}"
-
-                // also available as env variable to a process:
-                sh 'echo "Hello $GREETINGS_TO $BUILD_ID"'
+                echo "Hello, ${params.Greetings_to}!"
             }
         }
     }
