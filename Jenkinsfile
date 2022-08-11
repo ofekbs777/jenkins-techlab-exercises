@@ -6,13 +6,19 @@ pipeline {
         timestamps()  // Timestamper Plugin
         disableConcurrentBuilds()
     }
-    parameters {
-        string(name: 'Greetings_to', defaultValue: 'Jenkins Techlab', description: 'Who to greet?')
+    tools {
+        jdk 'jdk11'
+        maven 'maven36'
     }
     stages {
-        stage('Greeting') {
+        stage('Build') {
             steps {
-                echo "Hello, ${params.Greetings_to}!"
+
+                sh 'java -version'
+
+                sh 'javac -version'
+
+                sh 'mvn --version'
             }
         }
     }
