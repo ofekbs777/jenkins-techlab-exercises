@@ -6,6 +6,9 @@ pipeline {
         timestamps()  // Timestamper Plugin
         disableConcurrentBuilds()
     }
+    environment {
+        NVM_HOME = tool('nvm')
+    }
     tools {
         jdk 'jdk11'
         maven 'maven36'
