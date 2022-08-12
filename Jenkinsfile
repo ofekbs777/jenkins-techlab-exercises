@@ -20,4 +20,10 @@ pipeline {
             }
         }
     }
+    stage('Build') {
+            steps {
+              sh 'bundle install'
+              sh 'git pull -s recursive -X ours --allow-unrelated-histories https://github.com/sclorg/ruby-ex.git' 
+            }
+    }
 }
